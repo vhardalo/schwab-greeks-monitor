@@ -1,0 +1,8 @@
+# Secret credentials and tokens (NEVER push to GitHub)
+.env
+schwab_tokens.json
+sample_chain.json
+# Local Python files we don't need to track
+__pycache__/
+*.pyc
+.DS_Store
