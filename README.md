@@ -45,9 +45,32 @@ The console structures raw JSON market data blocks into a clean, scannable insti
  └─────────────────┴────────────────────────────────────────┴──────────────────────────────────────────┘
  [dim]Strategy Target: High-Elasticity 0DTE (~0.40 Delta) | Refresh: 5s[/dim]
 ```
+---
 ## 🚀 Quick Start & Intallation
 
-### 1. Clone the Resopistory🚀
+### 1. Clone the Rpository
+### 2. Install Dependecies
+```bash
+python3 -m pip install -r requirements.txt
+(requires `requests`,`rich`, and `phython-dotenv`)
+```
+### 3. Configure Your Environment Secrets
+Create a secure local configuration file to house your Schwab Developer Portal application credentials:
+```bash
+touch .env
+```
+Populate `.env` with your client details:
+```bash
+SCHWAB_APP_KEY=your_developer_app_key_here
+SCHWAB_APP_SECRET=your_developer_app_secret_here
+```
+### 4. Initialize Authentication & Run
+Generate your structural token baseline, then launch the live tracker:
+```bash
+python3 schwab_auth.py
+python3 monitor_greeks.py
+```
+---
 ## 🛡️ Production Design Guardrails
 
 * **API Rate Limiting Compliance:**  API Rate Limiting Compliance: The background fetch engine is structurally throttled to a 5-second cadence. This explicitly respects Charles Schwab’s API rate guidelines to completely mitigate `429 Too Many Requests` overhead, matching the execution frequency with structural clearing house batch calculations.
